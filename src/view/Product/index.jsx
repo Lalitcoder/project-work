@@ -21,7 +21,7 @@ const getData = async () => {
    
     try {
         setLoading(true)
-        const res = await axios.get(`https://api.escuelajs.co/api/v1/products`);
+        const res = await axios.get("https://api.escuelajs.co/api/v1/products");
         setData(res.data);
         setLoading(false)
     } catch (error) {
@@ -35,14 +35,15 @@ const getData = async () => {
         <div className='row'>
 
             <h1 className='text-center'> {loading ? ' Loading...' : ''}</h1>
+         
             <div className='col-3'>
                 <h2>{loading ? '' : 'Filters'}</h2>
             </div>
             <div className='col-9'>
-            <h2>  {loading ? '' : `Product`}</h2>
+            <h2>  {loading ? '' : `Products`}</h2>
                 <div className='row'>
                     
-                    {data && data.filter(item => item.category.name === param.itemId).map(item => (
+                    {data && data.filter(item => item?.category?.name === param.itemId).map(item => (
                         <div className="col-3 mb-4" key={item.id}>
                             <div className='card card-body'>
                                 <img src={item?.images} alt='' />
@@ -54,9 +55,11 @@ const getData = async () => {
                             </div>
                         </div>
                     ))}
+
                 </div>
 
             </div>
+            <h1>Products</h1>
         </div>
 
     )

@@ -12,23 +12,22 @@ import PageNotFound from './view/Pagenofound'
 
 const App = () => {
   return (
-    <div>
-   <Header />
-      <Routes>
-        <Route path="home" element={<Home />} />
-        <Route path="product" element={<Products />} >
-        <Route path=":itemId" element={<Products />} />
-        </Route>
-  
+    <div className="App">
+      <Header />
+      <Routes> 
+        <Route index element={<Home />} />
+        <Route path="products" element={<Products />} >
+          <Route path=":itemId" element={<Products />} />
          
-          <Route path="contact" element={<Contact />} />
-          <Route path="login" element={<Login />} /> 
-          <Route path="*" element={<PageNotFound />} />
+        </Route>
+        <Route path="contact" element={<Contact />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
-      <Footer />
+    <Footer />
     </div>
-  )
-
+  );
 }
+
+
 
 export default App
